@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TodoStore } from '../../stores/todo.store';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,10 +9,16 @@ import { TodoStore } from '../../stores/todo.store';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
+  itemForm = new FormControl('');
 
-  constructor(private store: TodoStore) { }
+  constructor(public store: TodoStore) { }
 
-  async ngOnInit() {
-    await this.store.fetch();
+  ngOnInit() {
+    this.store.fetch();
+  }
+
+  addItem() {
+    this.store.add(this.itemForm.value);
+    this.itemForm.reset();
   }
 }
