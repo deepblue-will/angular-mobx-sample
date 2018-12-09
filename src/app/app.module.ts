@@ -1,12 +1,13 @@
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MobxAngularModule} from 'mobx-angular';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {InMemoryDataService} from './in-memory-data.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       InMemoryDataService, { dataEncapsulation: false }
     ),
 
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MobxAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]

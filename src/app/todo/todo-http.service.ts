@@ -9,6 +9,6 @@ export class TodoHttpService {
   constructor(private http: HttpClient) { }
 
   fetchTodos(): Promise<any[]> {
-    return this.http.get('api/todos').toPromise();
+    return this.http.get<any[]>('api/todos').toPromise();
   }
 }
